@@ -1,0 +1,21 @@
+.review {
+  padding: 10px;
+  margin: 0;
+  box-shadow: 1px 1px 10px #ccc;
+}
+
+.total {
+  color: #ccc;
+}
+
+.author {
+  color: #ccc;
+}
+
+.content {
+  color: #fff;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+}

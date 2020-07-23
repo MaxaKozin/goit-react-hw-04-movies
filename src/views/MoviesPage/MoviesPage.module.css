@@ -1,0 +1,45 @@
+.movies {
+  padding: 20px 10px;
+}
+
+.results {
+  color: #ccc;
+  font-style: italic;
+  font-size: 18px;
+  padding: 10px;
+  margin: 0;
+}
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 30px 10px 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 15px;
+}
+
+.item:hover {
+  box-shadow: 1px 1px 10px #fff;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  text-decoration: none;
+  color: #ccc;
+  text-align: center;
+}

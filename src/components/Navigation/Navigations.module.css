@@ -1,0 +1,23 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.item:not(:last-child) {
+  margin-right: 16px;
+}
+
+.link {
+  text-decoration: none;
+  color: #ccc;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.link_active {
+  font-weight: bold;
+  color: #aa2;
+  text-decoration: underline;
+}

@@ -1,0 +1,104 @@
+.page {
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  /* padding: 20px; */
+}
+
+.poster {
+  max-width: 200px;
+  height: auto;
+  margin-right: 20px;
+  object-fit: contain;
+}
+
+.title {
+  text-align: left;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 400px;
+  color: #ccc;
+}
+
+.overview {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.genres {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.genres span {
+  font-size: 14px;
+}
+
+.genres span:not(:last-child) {
+  margin-right: 8px;
+}
+
+.adds {
+  color: #ccc;
+}
+
+.link {
+  margin-bottom: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  text-shadow: 2px 2px 3px #fff;
+  margin-bottom: 20px;
+}
+
+.link_active {
+  color: #aa8;
+  text-shadow: 2px 2px 5px #ffc;
+}
+
+.link:hover {
+  color: #aa8;
+  text-shadow: 2px 2px 5px #ffc;
+}
+
+.link:not(:last-child) {
+  margin-right: 15px;
+}
+
+.button {
+  border: none;
+  background-color: #55f;
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px 20px 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.button:hover {
+  background-color: #88c;
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .poster {
+    max-width: 100%;
+  }
+
+  .title {
+    text-align: center;
+  }
+}

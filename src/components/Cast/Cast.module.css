@@ -1,0 +1,37 @@
+.wrapper {
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-gap: 10px;
+}
+
+.box {
+  max-width: 120px;
+  padding: 10px;
+  box-shadow: 1px 1px 10px #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ccc;
+}
+.avatar {
+  display: block;
+  max-width: 100px;
+}
+
+.name {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.box p {
+  text-align: center;
+}
+
+.empty {
+  width: 90%;
+  height: 60%;
+  background-color: #ccc;
+}

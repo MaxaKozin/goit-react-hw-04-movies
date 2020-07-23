@@ -1,0 +1,6 @@
+.header {
+  background: linear-gradient(90deg, #55f, #33a, #55f);
+  padding: 10px;
+  margin: 0;
+  box-shadow: 1px 1px 5px #555;
+}

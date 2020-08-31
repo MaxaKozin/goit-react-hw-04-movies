@@ -1,11 +1,11 @@
-
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
-import styles from './Appbar.module.css';
+
+import s from './Appbar.module.css';
 
 const Apbbar = () => {
   return (
-    <header className={styles.header}>
+    <header className={s.header}>
       <Navigation />
     </header>
   );

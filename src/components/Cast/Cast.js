@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { getImgUrl } from '../../services/apiService';
-import styles from './Cast.module.css';
+
+import s from './Cast.module.css';
 
 class Cast extends Component {
   state = {}
   render() {
     const { casts } = this.props;
     return (
-      <div className={styles.wrapper}>
-        {casts.map(cast => (
-          <div className={styles.box} key={cast.id}>
-            {cast.profile_path ? <img className={styles.avatar} src={`${getImgUrl(cast.profile_path)}`} alt={cast.name} /> :
-              <div className={styles.empty}></div>}
-            <h3 className={styles.name}>{cast.name}</h3>
-            <p>as {cast.character}</p>
-
+      <div className={s.wrapper}>
+        {casts.map(({ id, profile_path, name, character }) => (
+          <div className={s.box} key={id}>
+            {profile_path ? <img className={s.avatar} src={`${getImgUrl(profile_path)}`} alt={name} /> :
+              <div className={s.empty}></div>}
+            <h3 className={s.name}>{name}</h3>
+            <p>as {character}</p>
           </div>
         ))
         }
-
       </div>
     );
   }

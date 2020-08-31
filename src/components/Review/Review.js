@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styles from './Review.module.css';
+
+import s from './Review.module.css';
 
 class Review extends Component {
   state = {}
@@ -7,10 +8,10 @@ class Review extends Component {
     const { reviews } = this.props;
     return (
       <>
-        {reviews.map(review => (
-          <div className={styles.review} key={review.id}>
-            <h2 className={styles.author}>Author: {review.author}</h2>
-            <p className={styles.content}>{review.content}</p>
+        {reviews.map(({ id, author, content }) => (
+          <div className={s.review} key={id}>
+            <h2 className={s.author}>Author: {author}</h2>
+            <p className={s.content}>{content}</p>
           </div>
         ))
         }

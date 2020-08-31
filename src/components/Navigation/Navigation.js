@@ -1,25 +1,26 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+
 import routes from '../../routes';
-import styles from './Navigations.module.css';
+
+import s from './Navigations.module.css';
 
 const Navigation = () => {
   return (
-    <ul className={styles.list}>
-      <li className={styles.item}>
+    <ul className={s.list}>
+      <li className={s.item}>
         <NavLink
-          className={styles.link}
-          activeClassName={styles.link_active}
+          className={s.link}
+          activeClassName={s.link_active}
           to={routes.home}
           exact>
           Home
           </NavLink>
       </li>
-      <li className={styles.item}>
+      <li className={s.item}>
         <NavLink
-          className={styles.link}
-          activeClassName={styles.link_active}
+          className={s.link}
+          activeClassName={s.link_active}
           to={routes.movies}
           exact>
           Movies

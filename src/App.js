@@ -1,9 +1,10 @@
 import React, { Suspense, lazy, Component } from 'react';
-import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import routes from './routes';
-import Appbar from './components/Appbar/Appbar';
 
+import Appbar from './components/Appbar/Appbar';
+import routes from './routes';
+
+import './App.css';
 
 const HomePage = lazy(() =>
   import('./views/HomePage/HomePage' /* webpackChunkName: "home-page" */),

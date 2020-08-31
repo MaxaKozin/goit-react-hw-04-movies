@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import styles from './MoviesDetailsPage.module.css';
-import { fetchById, getImgUrl } from '../../services/apiService';
+import { NavLink, Route } from 'react-router-dom';
+
 import routes from '../../routes';
 import Reviews from '../../components/Review/Reviews';
 import Casts from '../../components/Cast/Casts';
-import { NavLink, Route } from 'react-router-dom';
+import { fetchById, getImgUrl } from '../../services/apiService';
+
+import s from './MoviesDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -28,47 +30,47 @@ class MovieDetailsPage extends Component {
 
   render() {
     const { movie } = this.state;
+    const { url, path } = this.props.match;
     const date = new Date();
     return (
-      <div className={styles.page}>
-        <button className={styles.button} type="button" onClick={this.handleGoBack}>
+      <div className={s.page}>
+        <button className={s.button} type="button" onClick={this.handleGoBack}>
           ◄ Back
         </button>
         <br />
-
-        {this.state.movie && (
-
-          <div className={styles.card}>
-            <img src={getImgUrl(movie.poster_path)} alt={movie.title} className={styles.poster} />
-            <div className={styles.wrapper}>
-              <h1 className={styles.title}>{this.state.movie.title}({date.getFullYear(movie.release_date)})</h1>
-              <p className={styles.overview}>{movie.overview}</p>
-              {movie.genres.length > 0 && (<div className={styles.genres}>
-                <h3 className={styles.genres}> Genres</h3>
-                {movie.genres.map(genre => (
-                  <span key={genre.name}>{genre.name}</span>
+        {movie && (
+          <div className={s.card}>
+            {movie.poster_path ? <img src={getImgUrl(movie.poster_path)} alt={movie.title} className={s.poster} />
+              : <img src={"https://dummyimage.com/400x600/cfcfcf/ffffff&text=NO+IMAGE+AVAILABLE"} alt={movie.title} className={s.poster} />}
+            <div className={s.wrapper}>
+              <h1 className={s.title}>{movie.title}({date.getFullYear(movie.release_date)})</h1>
+              <p className={s.overview}>{movie.overview}</p>
+              {movie.genres.length > 0 && (<div className={s.genres}>
+                <h3 className={s.genres}> Genres</h3>
+                {movie.genres.map(({ name }) => (
+                  <span key={name}>{name}</span>
                 ))}
               </div>)}
             </div>
           </div>
         )
         }
-        <h2 className={styles.adds}>Additional information</h2>
+        <h2 className={s.adds}>Additional information</h2>
         <NavLink
-          to={`${this.props.match.url}/reviews`}
-          className={styles.link}
-          activeClassName={styles.link_active}
+          to={`${url}/reviews`}
+          className={s.link}
+          activeClassName={s.link_active}
         >Reviews</NavLink>
-        <NavLink to={`${this.props.match.url}/casts`} className={styles.link} activeClassName={styles.link_active}>Casts</NavLink>
+        <NavLink to={`${url}/casts`} className={s.link} activeClassName={s.link_active}>Casts</NavLink>
 
-        <Route path={`${this.props.match.path}/reviews`} render={
-          props => {
-            return <Reviews movieId={props.match.params.movieId} />
+        <Route path={`${path}/reviews`} render={
+          ({ match: { params } }) => {
+            return <Reviews movieId={params.movieId} />
           }
         } />
-        <Route path={`${this.props.match.path}/casts`} render={
-          props => {
-            return <Casts movieId={props.match.params.movieId} />
+        <Route path={`${path}/casts`} render={
+          ({ match: { params } }) => {
+            return <Casts movieId={params.movieId} />
           }
         } />
       </div>

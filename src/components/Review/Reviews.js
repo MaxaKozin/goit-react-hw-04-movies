@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
+
 import Review from './Review';
 import { fetchById } from '../../services/apiService';
-import styles from './Review.module.css';
+
+import s from './Review.module.css';
 
 class Reviews extends Component {
   state = { reviews: null }
 
   componentDidMount() {
     this.fetchReviews()
-
   }
 
   fetchReviews = () => {
-    fetchById(this.props.movieId, 'reviews').then(response => this.setState({ reviews: response.results }))
+    fetchById(this.props.movieId, 'reviews').then(({ results }) => this.setState({ reviews: results }))
   }
 
-
   render() {
+    const { reviews } = this.state;
     return (
       <>
-        {this.state.reviews && (
+        {reviews && (
           <>
-            <h3 className={styles.total}>Total reviews: {this.state.reviews.length}</h3>
-            <Review reviews={this.state.reviews} />
+            <h3 className={s.total}>Total reviews: {reviews.length}</h3>
+            <Review reviews={reviews} />
           </>
         )}
-      </>)
+      </>
+    )
   }
 }
 

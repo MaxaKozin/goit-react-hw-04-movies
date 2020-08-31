@@ -11,16 +11,16 @@ class Casts extends Component {
   }
 
   fetchCasts = () => {
-    fetchById(this.props.movieId, 'credits').then(response => this.setState({ casts: response.cast }));
+    fetchById(this.props.movieId, 'credits').then(({ cast }) => this.setState({ casts: cast }));
   }
 
-
   render() {
+    const { casts } = this.state;
     return (
       <>
-        {this.state.casts && (
+        {casts && (
           <>
-            <Cast casts={this.state.casts} />
+            <Cast casts={casts} />
           </>
         )}
       </>)

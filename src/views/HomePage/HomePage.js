@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
-import { fetchRated, getImgUrl } from '../../services/apiService';
+import { fetchRated, getImgUrl } from "../../services/apiService";
 
-import s from './HomePage.module.css';
+import s from "./HomePage.module.css";
 
 class HomePage extends Component {
   state = {
-    movies: []
-  }
+    movies: [],
+  };
 
   componentDidMount() {
-    fetchRated().then(result => {
-      this.setState({ movies: result })
+    fetchRated().then((result) => {
+      this.setState({ movies: result });
     });
   }
 
@@ -36,10 +36,25 @@ class HomePage extends Component {
                     }}
                   >
                     <div className={s.wrapper}>
-                      {poster_path ? <img className={s.image} src={`${getImgUrl(poster_path)}`} alt='' /> :
-                        <img className={s.image} src={"https://dummyimage.com/400x600/cfcfcf/ffffff&text=NO+IMAGE+AVAILABLE"} alt='' />}
+                      {poster_path ? (
+                        <img
+                          className={s.image}
+                          src={`${getImgUrl(poster_path)}`}
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          className={s.image}
+                          src={
+                            "https://dummyimage.com/400x600/cfcfcf/ffffff&text=NO+IMAGE+AVAILABLE"
+                          }
+                          alt=""
+                        />
+                      )}
                       <div className={s.title_wrapper}>
-                        <p className={s.title}>{title}({date.getFullYear(release_date)})</p>
+                        <p className={s.title}>
+                          {title}({date.getFullYear(release_date)})
+                        </p>
                       </div>
                     </div>
                   </NavLink>
@@ -47,8 +62,7 @@ class HomePage extends Component {
               ))}
             </ul>
           </div>
-        )
-        }
+        )}
       </>
     );
   }

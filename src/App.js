@@ -1,33 +1,33 @@
-import React, { Suspense, lazy, Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Suspense, lazy, Component } from "react";
+import { Switch, Route } from "react-router-dom";
 
-import Appbar from './components/Appbar/Appbar';
-import routes from './routes';
+import Appbar from "./components/Appbar/Appbar";
+import routes from "./routes";
 
-import './App.css';
+import "./App.css";
 
 const HomePage = lazy(() =>
-  import('./views/HomePage/HomePage' /* webpackChunkName: "home-page" */),
+  import("./views/HomePage/HomePage" /* webpackChunkName: "home-page" */)
 );
 
 const MoviesPage = lazy(() =>
-  import('./views/MoviesPage/MoviesPage' /* webpackChunkName: "movies-page" */),
+  import("./views/MoviesPage/MoviesPage" /* webpackChunkName: "movies-page" */)
 );
 
 const MovieDetailsPage = lazy(() =>
   import(
-    './views/MovieDetailsPage/MoviesDetailsPage' /* webpackChunkName: "movies-details-page" */
-  ),
+    "./views/MovieDetailsPage/MoviesDetailsPage" /* webpackChunkName: "movies-details-page" */
+  )
 );
 
 class App extends Component {
   state = {
-    data: []
-  }
+    data: [],
+  };
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <Appbar />
 
         <Suspense fallback={<div>Loading...</div>}>
@@ -39,7 +39,7 @@ class App extends Component {
           </Switch>
         </Suspense>
       </div>
-    )
+    );
   }
 }
 

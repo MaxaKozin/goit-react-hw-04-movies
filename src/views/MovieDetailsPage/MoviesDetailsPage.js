@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink, Route } from "react-router-dom";
 
-import routes from '../../routes';
-import Reviews from '../../components/Review/Reviews';
-import Casts from '../../components/Cast/Casts';
-import { fetchById, getImgUrl } from '../../services/apiService';
+import routes from "../../routes";
+import Reviews from "../../components/Review/Reviews";
+import Casts from "../../components/Cast/Casts";
+import { fetchById, getImgUrl } from "../../services/apiService";
 
-import s from './MoviesDetailsPage.module.css';
+import s from "./MoviesDetailsPage.module.css";
 
 class MovieDetailsPage extends Component {
   state = {
-    movie: null
-  }
+    movie: null,
+  };
 
   componentDidMount() {
-    fetchById(this.props.match.params.movieId)
-      .then(movie => this.setState({ movie }));
+    fetchById(this.props.match.params.movieId).then((movie) =>
+      this.setState({ movie })
+    );
   }
 
   handleGoBack = () => {
@@ -40,39 +41,65 @@ class MovieDetailsPage extends Component {
         <br />
         {movie && (
           <div className={s.card}>
-            {movie.poster_path ? <img src={getImgUrl(movie.poster_path)} alt={movie.title} className={s.poster} />
-              : <img src={"https://dummyimage.com/400x600/cfcfcf/ffffff&text=NO+IMAGE+AVAILABLE"} alt={movie.title} className={s.poster} />}
+            {movie.poster_path ? (
+              <img
+                src={getImgUrl(movie.poster_path)}
+                alt={movie.title}
+                className={s.poster}
+              />
+            ) : (
+              <img
+                src={
+                  "https://dummyimage.com/400x600/cfcfcf/ffffff&text=NO+IMAGE+AVAILABLE"
+                }
+                alt={movie.title}
+                className={s.poster}
+              />
+            )}
             <div className={s.wrapper}>
-              <h1 className={s.title}>{movie.title}({date.getFullYear(movie.release_date)})</h1>
+              <h1 className={s.title}>
+                {movie.title}({date.getFullYear(movie.release_date)})
+              </h1>
               <p className={s.overview}>{movie.overview}</p>
-              {movie.genres.length > 0 && (<div className={s.genres}>
-                <h3 className={s.genres}> Genres</h3>
-                {movie.genres.map(({ name }) => (
-                  <span key={name}>{name}</span>
-                ))}
-              </div>)}
+              {movie.genres.length > 0 && (
+                <div className={s.genres}>
+                  <h3 className={s.genres}> Genres</h3>
+                  {movie.genres.map(({ name }) => (
+                    <span key={name}>{name}</span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        )
-        }
+        )}
         <h2 className={s.adds}>Additional information</h2>
         <NavLink
           to={`${url}/reviews`}
           className={s.link}
           activeClassName={s.link_active}
-        >Reviews</NavLink>
-        <NavLink to={`${url}/casts`} className={s.link} activeClassName={s.link_active}>Casts</NavLink>
+        >
+          Reviews
+        </NavLink>
+        <NavLink
+          to={`${url}/casts`}
+          className={s.link}
+          activeClassName={s.link_active}
+        >
+          Casts
+        </NavLink>
 
-        <Route path={`${path}/reviews`} render={
-          ({ match: { params } }) => {
-            return <Reviews movieId={params.movieId} />
-          }
-        } />
-        <Route path={`${path}/casts`} render={
-          ({ match: { params } }) => {
-            return <Casts movieId={params.movieId} />
-          }
-        } />
+        <Route
+          path={`${path}/reviews`}
+          render={({ match: { params } }) => {
+            return <Reviews movieId={params.movieId} />;
+          }}
+        />
+        <Route
+          path={`${path}/casts`}
+          render={({ match: { params } }) => {
+            return <Casts movieId={params.movieId} />;
+          }}
+        />
       </div>
     );
   }

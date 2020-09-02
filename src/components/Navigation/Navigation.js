@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import routes from '../../routes';
+import routes from "../../routes";
 
-import s from './Navigations.module.css';
+import s from "./Navigations.module.css";
 
 const Navigation = () => {
   return (
@@ -13,21 +13,23 @@ const Navigation = () => {
           className={s.link}
           activeClassName={s.link_active}
           to={routes.home}
-          exact>
+          exact
+        >
           Home
-          </NavLink>
+        </NavLink>
       </li>
       <li className={s.item}>
         <NavLink
           className={s.link}
           activeClassName={s.link_active}
           to={routes.movies}
-          exact>
+          exact
+        >
           Movies
-          </NavLink>
+        </NavLink>
       </li>
     </ul>
   );
-}
+};
 
 export default Navigation;

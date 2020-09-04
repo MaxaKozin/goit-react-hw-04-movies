@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 import Searchform from "../../components/Searchform/Searchform";
-import { fetchByQuery, getImgUrl } from "../../services/apiService";
+import { fetchByQuery } from "../../services/apiService";
 
 import s from "./MoviesPage.module.css";
+import MovieCard from "../../components/MovieCard/MovieCard";
 
 class MoviesPage extends Component {
   state = {
@@ -56,34 +57,17 @@ class MoviesPage extends Component {
               Results for: {location.search.slice(7)}
             </p>
             <ul className={s.list}>
-              {movies.map(({ id, poster_path, title }) => (
-                <li key={id} className={s.item}>
+              {movies.map((movie) => (
+                <li key={movie.id} className={s.item}>
                   <NavLink
                     to={{
-                      pathname: `${match.url}/${id}`,
+                      pathname: `${match.url}/${movie.id}`,
                       state: { from: location },
                     }}
                     className={s.link}
                     activeClassName={s.link_active}
                   >
-                    <div className={s.wrapper}>
-                      {poster_path ? (
-                        <img
-                          className={s.image}
-                          src={`${getImgUrl(poster_path)}`}
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          className={s.image}
-                          src={
-                            "https://dummyimage.com/400x600/cfcfcf/ffffff&text=NO+IMAGE+AVAILABLE"
-                          }
-                          alt=""
-                        />
-                      )}
-                      <p className={s.title}>{title}</p>
-                    </div>
+                    <MovieCard {...movie} />
                   </NavLink>
                 </li>
               ))}
